@@ -2,16 +2,17 @@ import React from 'react';
 
 type GreetProps = {
   name: string;
-  messagesCount: number;
+  messagesCount?: number;  //optional types. They might be or not. TS will not send an error
   isLoggedIn: boolean;
 };
 
-const Greet = (props: GreetProps) => {
+const Greet = ({name, isLoggedIn, messagesCount = 0}: GreetProps) => {
+
   return (
     <div>
-      {props.isLoggedIn ? (
+      {isLoggedIn ? (
         <h2>
-          Welcome, {props.name}, here! You have {props.messagesCount} unread messages!
+          Welcome, {name}, here! You have {messagesCount} unread messages!
         </h2>
       ) : (
         <h2>Welcome, Guest! Please, LogIn for continue</h2>
